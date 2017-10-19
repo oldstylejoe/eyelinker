@@ -43,7 +43,9 @@ read.asc <- function(fname)
     #We fix it if necessary
     if (has.raw && info$htarg)
     {
-        inp <- str_replace_all(inp,fixed("............."),fixed("\t............."))
+        #inp <- str_replace_all(inp,fixed("............."),fixed("\t............."))
+		#This info is nearly worthless anyway, but do replace all possible matches
+        inp <- str_replace_all(inp,"(M|\\.)(A|\\.)(N|\\.)(C|\\.)(F|\\.)(T|\\.)(B|\\.)(L|\\.)(R|\\.)(T|\\.)(B|\\.)(L|\\.)(R|\\.)",fixed("\t............."))
     }
     
     #"Header" isn't strict, it's whatever comes before the first "START" line
