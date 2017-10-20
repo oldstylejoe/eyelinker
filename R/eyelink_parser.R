@@ -84,6 +84,12 @@ read.asc <- function(fname)
     out <- map(vars,collect) %>% setNames(vars)
 
     out$info <- info
+	
+	#Record all the messages for access )
+	msg <- str_select(inp,"^MSG") %>% str_sub(start=5) %>% str_match("(\\d+)\\s(.*)") 
+	msg <- data.frame(time=as.numeric(msg[,2]),text=msg[,3])
+	out$allMSG <- msg
+	
     out
 }
 
