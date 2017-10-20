@@ -246,7 +246,7 @@ process.block <- function(blk,info)
 {
     hd <- process.block.header(blk)
     blk <- hd$the.rest
-    if (is.na(info)) #no raw data
+    if (any(is.na(info))) #no raw data
     {
         raw <- NULL
         which.raw <- rep(FALSE,length(blk))
