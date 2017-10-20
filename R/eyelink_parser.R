@@ -155,7 +155,7 @@ tsv2df <- function(dat,coltypes)
         dat <- paste0(dat,collapse="\n")
     }
     out <- read_tsv(dat,col_names=FALSE,col_types=paste0(coltypes,collapse=""))
-    ##        if (!(is.null(attr(suppressWarnings(out), "problems")))) browser()
+            if (!(is.null(attr(suppressWarnings(out), "problems")))) browser()
     out
 }
 
