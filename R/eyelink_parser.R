@@ -234,9 +234,10 @@ process.events <- function(evt,events)
         msg <- c()
     }
     
-    fix <- if (str_detect(evt,"^EFIX") %>% any) parse.fixations(evt,events) else NULL
-    sacc <- if (str_detect(evt,"^ESAC") %>% any) parse.saccades(evt,events) else NULL
-    blinks <- if (str_detect(evt,"^SBLI") %>% any) parse.blinks(evt,events) else NULL
+	#must return NA to keep the correct number when there are no events
+    fix <- if (str_detect(evt,"^EFIX") %>% any) parse.fixations(evt,events) else NA
+    sacc <- if (str_detect(evt,"^ESAC") %>% any) parse.saccades(evt,events) else NA
+    blinks <- if (str_detect(evt,"^SBLI") %>% any) parse.blinks(evt,events) else NA
     list(fix=fix,sacc=sacc,msg=msg,blinks=blinks)
 }
 
