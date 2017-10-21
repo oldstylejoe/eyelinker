@@ -77,7 +77,8 @@ read.asc <- function(fname)
         }
         else
         {
-            out
+			#get rid of the confusing "NA." column that comes from empty measurements
+            out[,names(out)!="NA."]
         }
     }
     vars <- c("raw","msg","sacc","fix","blinks","info")
