@@ -59,6 +59,7 @@ read.asc <- function(fname)
     bl.end <- str_detect(inp,"^END")%>%which
     nBlocks <- length(bl.start)
     blocks <- llply(1:nBlocks,function(indB) process.block(inp[bl.start[indB]:bl.end[indB]],info))
+	print(str(blocks)
     ## collect <- function(vname)
     ##     {
     ##         valid <- Filter(function(ind) !is.null(blocks[[ind]][[vname]]),1:length(blocks))
