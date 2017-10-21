@@ -59,7 +59,7 @@ read.asc <- function(fname)
     bl.end <- str_detect(inp,"^END")%>%which
     nBlocks <- length(bl.start)
     blocks <- llply(1:nBlocks,function(indB) process.block(inp[bl.start[indB]:bl.end[indB]],info))
-	print(str(blocks))
+	#print(str(blocks))
     ## collect <- function(vname)
     ##     {
     ##         valid <- Filter(function(ind) !is.null(blocks[[ind]][[vname]]),1:length(blocks))
@@ -235,10 +235,10 @@ process.events <- function(evt,events)
         msg <- c()
     }
     
-	#must return NA to keep the correct number when there are no events
-    fix <- if (str_detect(evt,"^EFIX") %>% any) parse.fixations(evt,events) else NA
-    sacc <- if (str_detect(evt,"^ESAC") %>% any) parse.saccades(evt,events) else NA
-    blinks <- if (str_detect(evt,"^SBLI") %>% any) parse.blinks(evt,events) else NA
+	#must return empty dataframe to keep the correct number when there are no events
+    fix <- if (str_detect(evt,"^EFIX") %>% any) parse.fixations(evt,events) else data.frame(NA)
+    sacc <- if (str_detect(evt,"^ESAC") %>% any) parse.saccades(evt,events) else data.frame(NA)
+    blinks <- if (str_detect(evt,"^SBLI") %>% any) parse.blinks(evt,events) else data.frame(NA)
     list(fix=fix,sacc=sacc,msg=msg,blinks=blinks)
 }
 
